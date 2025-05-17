@@ -1,14 +1,14 @@
-package theo.bank.authentication.dto;
+package theo.bank.users.dto;
 
 public class CreatedCustomerDTO {
 
     String name;
-    String age;
+    int age;
     String phone;
     AuthenticationDTO authenticationDTO;
     CreatedAccountDTO createdAccountDTO;
 
-    public CreatedCustomerDTO(String name, String age, String phone, AuthenticationDTO authenticationDTO, CreatedAccountDTO createdAccountDTO) {
+    public CreatedCustomerDTO(String name, int age, String phone, AuthenticationDTO authenticationDTO, CreatedAccountDTO createdAccountDTO) {
         this.name = name;
         this.age = age;
         this.phone = phone;
@@ -27,11 +27,11 @@ public class CreatedCustomerDTO {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

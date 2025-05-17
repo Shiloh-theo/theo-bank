@@ -1,25 +1,19 @@
-package theo.bank.users.dto;
+package theo.bank.account.dto;
 
 public class CreatedCustomerDTO {
 
     String name;
-    String email;
-    String password;
-    int pin;
     String age;
     String phone;
-    String accountNumber;
-    double balance;
+    AuthenticationDTO authenticationDTO;
+    CreatedAccountDTO createdAccountDTO;
 
-    public CreatedCustomerDTO(String name, String email, String password, int pin, String age, String phone, String accountNumber, double balance) {
+    public CreatedCustomerDTO(String name, String age, String phone, AuthenticationDTO authenticationDTO, CreatedAccountDTO createdAccountDTO) {
         this.name = name;
-        this.email = email;
-        this.password = password;
-        this.pin = pin;
         this.age = age;
         this.phone = phone;
-        this.accountNumber = accountNumber;
-        this.balance = balance;
+        this.authenticationDTO = authenticationDTO;
+        this.createdAccountDTO = createdAccountDTO;
     }
 
     public CreatedCustomerDTO() {
@@ -31,30 +25,6 @@ public class CreatedCustomerDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getPin() {
-        return pin;
-    }
-
-    public void setPin(int pin) {
-        this.pin = pin;
     }
 
     public String getAge() {
@@ -73,19 +43,19 @@ public class CreatedCustomerDTO {
         this.phone = phone;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public AuthenticationDTO getAuthenticationDTO() {
+        return authenticationDTO;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setAuthenticationDTO(AuthenticationDTO authenticationDTO) {
+        this.authenticationDTO = authenticationDTO;
     }
 
-    public double getBalance() {
-        return balance;
+    public CreatedAccountDTO getCreatedAccountDTO() {
+        return createdAccountDTO;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
+    public void setCreatedAccountDTO(CreatedAccountDTO createdAccountDTO) {
+        this.createdAccountDTO = createdAccountDTO;
     }
 }

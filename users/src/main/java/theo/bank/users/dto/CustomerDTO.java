@@ -1,4 +1,4 @@
-package theo.bank.account.dto;
+package theo.bank.users.dto;
 
 public class CustomerDTO {
 
@@ -6,10 +6,10 @@ public class CustomerDTO {
     String email;
     String password;
     int pin;
-    String age;
+    int age;
     String phone;
 
-    public CustomerDTO(String name, String email, String password, int pin, String age, String phone) {
+    public CustomerDTO(String name, String email, String password, int pin, int age, String phone) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -53,11 +53,11 @@ public class CustomerDTO {
         this.pin = pin;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

@@ -1,4 +1,4 @@
-package theo.bank.authentication.dto;
+package theo.bank.users.dto;
 
 public class AccountDTO {
 

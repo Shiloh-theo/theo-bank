@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import theo.bank.users.dto.CreatedCustomerDTO;
 import theo.bank.users.dto.CustomerDTO;
-import theo.bank.users.model.Customer;
 import theo.bank.users.service.CustomerService;
 
 @RestController
 @RequestMapping(path = "bank/")
-public class UserController {
+public class CustomerController {
 
     @Autowired
     CustomerService service;
