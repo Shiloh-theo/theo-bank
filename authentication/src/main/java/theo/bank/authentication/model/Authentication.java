@@ -15,12 +15,14 @@ public class Authentication {
     String password;
     String email;
     int pin;
+    int userId;
 
-    public Authentication(int authenticationId, String password, String email, int pin) {
+    public Authentication(int authenticationId, String password, String email, int pin, int userId) {
         this.authenticationId = authenticationId;
         this.password = password;
         this.email = email;
         this.pin = pin;
+        this.userId=userId;
     }
 
     public Authentication() {
@@ -28,6 +30,14 @@ public class Authentication {
 
     public int getAuthenticationId() {
         return authenticationId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public void setAuthenticationId(int authenticationId) {

@@ -13,14 +13,24 @@ public class AccountDetails {
     int accountId;
     String accountNumber;
     double balance;
+    int userId;
 
-    public AccountDetails(int accountId, String accountNumber, double balance) {
+    public AccountDetails(int accountId, String accountNumber, double balance, int userId) {
         this.accountId = accountId;
         this.accountNumber = accountNumber;
         this.balance = balance;
+        this.userId=userId;
     }
 
     public AccountDetails() {
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getAccountId() {

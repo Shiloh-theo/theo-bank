@@ -5,14 +5,24 @@ public class AuthenticationDTO {
     String email;
     String password;
     int pin;
+    int userId;
 
-    public AuthenticationDTO(String email, String password, int pin) {
+    public AuthenticationDTO(String email, String password, int pin, int userId) {
         this.email = email;
         this.password = password;
         this.pin = pin;
+        this.userId=userId;
     }
 
     public AuthenticationDTO() {
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {

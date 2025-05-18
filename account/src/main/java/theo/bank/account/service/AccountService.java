@@ -26,6 +26,7 @@ public class AccountService {
         AccountDetails accountDetails = new AccountDetails();
         accountDetails.setBalance(0);
         accountDetails.setAccountNumber(accountNumber);
+        accountDetails.setUserId(dto.getUserId());
 
         repo.save(accountDetails);
 

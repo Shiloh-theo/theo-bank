@@ -19,6 +19,7 @@ public class AuthService {
         auth.setPassword(dto.getPassword());
         auth.setEmail(dto.getEmail());
         auth.setPin(dto.getPin());
+        auth.setUserId(dto.getUserId());
 
         repo.save(auth);
 

@@ -35,6 +35,7 @@ public class CustomerService {
         authDTO.setEmail(dto.getEmail());
         authDTO.setPin(dto.getPin());
         authDTO.setPassword(dto.getPassword());
+        authDTO.setUserId(newCustomer.getUserId());
 
         authFeign.registerAuth(authDTO);
 
