@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import theo.bank.transactions.dto.AccountTransactionDTO;
 import theo.bank.transactions.dto.ReceivedAccountDTO;
 
-@FeignClient(name = "Account")
+@FeignClient(name = "account")
 public interface AccountFeign {
 
-    @PostMapping("/bank/getIds")
+    @PostMapping("bank/getIds")
     public ResponseEntity<ReceivedAccountDTO> getAccountIDs(@RequestBody AccountTransactionDTO dto);
 
-    @PutMapping("/bank/savetransaction")
+    @PutMapping("bank/savetransaction")
     public boolean saveTransaction(@RequestBody ReceivedAccountDTO dto);
 }

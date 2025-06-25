@@ -2,11 +2,9 @@ package theo.bank.authentication.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import theo.bank.authentication.dto.AuthenticationDTO;
+import theo.bank.authentication.dto.LoginDTO;
 import theo.bank.authentication.service.AuthService;
 
 @RestController
@@ -19,5 +17,15 @@ public class AuthenticationController {
     @PostMapping("registerAuth")
     public ResponseEntity<AuthenticationDTO> registerAuth(@RequestBody AuthenticationDTO dto){
         return service.registerAuth(dto);
+    }
+
+    @PostMapping("login")
+    public String login(@RequestBody LoginDTO dto){
+        return service.login(dto);
+    }
+
+    @GetMapping("test")
+    public String test(){
+        return "successful";
     }
 }

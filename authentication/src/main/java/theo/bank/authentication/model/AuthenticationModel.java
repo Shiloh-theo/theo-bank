@@ -4,10 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @Entity
-public class Authentication {
+public class AuthenticationModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +16,7 @@ public class Authentication {
     int pin;
     int userId;
 
-    public Authentication(int authenticationId, String password, String email, int pin, int userId) {
+    public AuthenticationModel(int authenticationId, String password, String email, int pin, int userId) {
         this.authenticationId = authenticationId;
         this.password = password;
         this.email = email;
@@ -25,7 +24,7 @@ public class Authentication {
         this.userId=userId;
     }
 
-    public Authentication() {
+    public AuthenticationModel() {
     }
 
     public int getAuthenticationId() {

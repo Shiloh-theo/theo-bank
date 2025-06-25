@@ -2,17 +2,15 @@ package theo.bank.transactions.service;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import theo.bank.transactions.dto.AccountTransactionDTO;
-import theo.bank.transactions.dto.AuthCallDTO;
-import theo.bank.transactions.dto.FrontendTransactionDTO;
-import theo.bank.transactions.dto.ReceivedAccountDTO;
+import theo.bank.transactions.dto.*;
 import theo.bank.transactions.feignClients.AccountFeign;
 import theo.bank.transactions.feignClients.AuthFeign;
+import theo.bank.transactions.model.Transactions;
 import theo.bank.transactions.repository.TransactionRepository;
+import java.util.Map;
 
 @Service
 public class TransactionService {
-
 
     TransactionRepository repo;
     AccountFeign accountFeign;
@@ -25,39 +23,46 @@ public class TransactionService {
     }
 
     public String confirmDetails(FrontendTransactionDTO dto) {
-
         AccountTransactionDTO accountTransactionDTO = new AccountTransactionDTO();
         accountTransactionDTO.setReceiverAccount(dto.getReceiverAccount());
         accountTransactionDTO.setSenderAccount(dto.getSenderAccount());
 
         ReceivedAccountDTO receivedAccountDTO = accountFeign.getAccountIDs(accountTransactionDTO).getBody();
 
-        AuthCallDTO authCallDTO =new AuthCallDTO();
-
+        AuthCallDTO authCallDTO = new AuthCallDTO();
         authCallDTO.setPin(dto.getPin());
         assert receivedAccountDTO != null;
         authCallDTO.setSenderId(receivedAccountDTO.getSenderId());
 
-        boolean verified = authFeign.verifyPin(authCallDTO);
+        ResponseEntity<AuthReceivedDTO> storedPin = authFeign.verifyPin(authCallDTO);
 
-        if(verified && receivedAccountDTO != null){
-           makeTransaction(receivedAccountDTO, dto);
+        if (storedPin.equals(dto.getPin()) && receivedAccountDTO != null) {
+            makeTransaction(receivedAccountDTO, dto);
         }
 
         return ResponseEntity.status(200).toString();
     }
 
-    public String makeTransaction(ReceivedAccountDTO receivedAccountDTO, FrontendTransactionDTO dto){
+    public String makeTransaction(ReceivedAccountDTO receivedAccountDTO, FrontendTransactionDTO dto) {
         double newReceiverBalance = receivedAccountDTO.getReceiverBalance() + dto.getAmount();
         double newSenderBalance = receivedAccountDTO.getSenderBalance() - dto.getAmount();
-        receivedAccountDTO.setReceiverBalance(newReceiverBalance);
-        receivedAccountDTO.setSenderBalance(newSenderBalance);
 
         ReceivedAccountDTO newReceivedAccountDTO = new ReceivedAccountDTO();
         newReceivedAccountDTO.setReceiverId(receivedAccountDTO.getReceiverId());
         newReceivedAccountDTO.setSenderBalance(newSenderBalance);
         newReceivedAccountDTO.setReceiverBalance(newReceiverBalance);
         newReceivedAccountDTO.setSenderId(receivedAccountDTO.getSenderId());
+
+        accountFeign.saveTransaction(newReceivedAccountDTO);
+
+        Transactions transaction = new Transactions();
+        transaction.setAmount(dto.getAmount());
+        transaction.setReceiverAccount(dto.getReceiverAccount());
+        transaction.setReceiverId(receivedAccountDTO.getReceiverId());
+        transaction.setSenderAccount(dto.getSenderAccount());
+        transaction.setSenderId(receivedAccountDTO.getSenderId());
+
+        repo.save(transaction);
 
         return ResponseEntity.status(200).toString();
     }

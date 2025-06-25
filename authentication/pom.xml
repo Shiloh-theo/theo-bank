@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>theo.bank</groupId>
-	<artifactId>authentication</artifactId>
+	<artifactId>authenticationModel</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>authorization</name>
 	<description>Service for authorization</description>
@@ -29,7 +29,7 @@
 	<properties>
 		<java.version>22</java.version>
 		<spring-cloud.version>2024.0.1</spring-cloud.version>
-		<start-class>theo.bank.authentication.AuthenticationApplication</start-class>
+		<start-class>theo.bank.authenticationModel.AuthenticationApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -43,6 +43,31 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-api</artifactId>
+			<version>0.12.6</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-impl</artifactId>
+			<version>0.12.6</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt-jackson</artifactId>
+			<version>0.12.6</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

@@ -1,10 +1,10 @@
-package theo.bank.authentication;
+package theo.bank.gateway_server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AuthenticationApplicationTests {
+class GatewayServerApplicationTests {
 
 	@Test
 	void contextLoads() {
